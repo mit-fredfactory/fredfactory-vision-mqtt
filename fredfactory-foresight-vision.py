@@ -201,7 +201,8 @@ if __name__ == '__main__':
                     
                     # create JSON message with arrays from lists
                     batch_to_send = {"images":vision_buffer[:]}
-                    
+                    num_data_in_batch = len(vision_buffer)
+
                     # clear lists
                     vision_buffer.clear()
 
@@ -216,7 +217,7 @@ if __name__ == '__main__':
                     mqtt_connection.publish(topic=MQTT_TOPIC, 
                                             payload=message_json, 
                                             qos=mqtt.QoS.AT_LEAST_ONCE)
-                    print(f"Published batch to MQTT: {message_json}")
+                    print(f"Published batch to MQTT: {num_data_in_batch} Images")
                 except:
                     print("Failed to send message")
                     
