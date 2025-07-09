@@ -182,10 +182,11 @@ if __name__ == '__main__':
                 with buffer_lock:
                     vision_buffer.append(new_vision_data)
 
-                print(f"Data generated: {new_vision_data}")
+                print(f"Vision Data Generated, size: {len(new_vision_data)/1024}kb")
                 time.sleep(2)
 
         except KeyboardInterrupt:
+            cap.release()
             print("Stopped by user.")
 
 
@@ -215,7 +216,7 @@ if __name__ == '__main__':
                     mqtt_connection.publish(topic=MQTT_TOPIC, 
                                             payload=message_json, 
                                             qos=mqtt.QoS.AT_LEAST_ONCE)
-                    print(f"\nPublished batch to MQTT: {message_json}\n")
+                    print(f"Published batch to MQTT: {message_json}")
                 except:
                     print("Failed to send message")
                     
@@ -240,6 +241,5 @@ if __name__ == '__main__':
         disconnect_future.result()
         print("Disconnected!")
         print("Program stopped.")
-
-
+    
 
