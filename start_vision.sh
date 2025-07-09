@@ -46,4 +46,4 @@ check_and_install "cv2" "opencv-python" "OpenCV"
 check_and_install "awsiot" "./aws-iot-device-sdk-python-v2" "AWS SDK"
 
 printf "\nRunning FrED Factory Foresight Vision application...\n"
-python3 fredfactory-foresight-vision.py --endpoint a2jz91nv8kralk-ats.iot.us-east-1.amazonaws.com --ca_file root-CA.crt --cert thing_FredFactory5.cert.pem --key thing_FredFactory5.private.key
+python3 fredfactory-vision-mqtt/fredfactory-foresight-vision.py --endpoint a2jz91nv8kralk-ats.iot.us-east-1.amazonaws.com --ca_file root-CA.crt --cert thing_FredFactory5.cert.pem --key thing_FredFactory5.private.key
